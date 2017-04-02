@@ -4,6 +4,8 @@ import android.app.ProgressDialog;
 import android.graphics.drawable.Drawable;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -16,8 +18,8 @@ import com.example.rssongira.localbird2.service.YahooService;
 public class MainActivity extends AppCompatActivity implements WeatherServiceCallback{
   private   ImageView WeatherIconView;
     private TextView Temperature,Condition,Location;
-
-
+    private EditText placeName;
+    String place;
     private YahooService service;
     private ProgressDialog dialog;
     @Override
@@ -28,19 +30,33 @@ public class MainActivity extends AppCompatActivity implements WeatherServiceCal
         Temperature=(TextView)findViewById(R.id.temperature);
         Condition=(TextView)findViewById(R.id.Condition);
         Location=(TextView)findViewById(R.id.location);
+        placeName=(EditText)findViewById(R.id.place);
 
-        service=new YahooService(this);
-        // Showing Dialog
-        dialog = new ProgressDialog(this);
-        dialog.setTitle("Dialog Title");
-        dialog.setMessage("Loading ............");
-        dialog.show();
-        service.RefereshWeather("Austin,Tx");
+
 
 
 
     }
+    public void ok(View v)
+    {
+        place = placeName.getText().toString();
+        if(place == null)
+        {
+            Toast.makeText(this,"Please Enter the location",Toast.LENGTH_LONG).show();
+        }
+        else
+        {
+            service=new YahooService(this);
+            // Showing Dialog
+            dialog = new ProgressDialog(this);
+            dialog.setTitle("Dialog Title");
+            dialog.setMessage("Loading ............");
+            dialog.show();
 
+            service.RefereshWeather(place);
+        }
+
+    }
     @Override
     public void ServiceSuccess(Channel channel) {
             dialog.hide();

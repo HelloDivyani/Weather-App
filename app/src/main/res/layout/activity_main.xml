@@ -15,10 +15,10 @@
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:text="@string/temperature"
         android:id="@+id/temperature"
+        android:layout_marginBottom="48dp"
         android:layout_alignParentBottom="true"
-        android:layout_alignLeft="@+id/location"
-        android:layout_alignStart="@+id/location"
-        android:layout_marginBottom="77dp" />
+        android:layout_toRightOf="@+id/location"
+        android:layout_toEndOf="@+id/location" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -26,8 +26,9 @@
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:text="@string/condition"
         android:id="@+id/Condition"
-        android:layout_centerVertical="true"
-        android:layout_centerHorizontal="true" />
+        android:layout_below="@+id/na"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="69dp" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -48,5 +49,27 @@
         android:layout_alignParentTop="true"
         android:layout_alignRight="@+id/Condition"
         android:layout_alignEnd="@+id/Condition" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/place"
+        android:hint="Enter the place name"
+        android:layout_below="@+id/location"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="44dp"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Set Place"
+        android:id="@+id/set"
+        android:onClick="ok"
+        android:layout_above="@+id/temperature"
+        android:layout_alignLeft="@+id/na"
+        android:layout_alignStart="@+id/na" />
 
 </RelativeLayout>
